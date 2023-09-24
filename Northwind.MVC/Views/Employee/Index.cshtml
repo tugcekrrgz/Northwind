@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover" id="employeeTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody id="employeeBody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12"> 
+        <div class="card">
+            <div class="card-body">
+                <h1></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/js/employee.js"></script>
+}
+
