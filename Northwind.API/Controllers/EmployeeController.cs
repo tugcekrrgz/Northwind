@@ -25,5 +25,13 @@ namespace Northwind.API.Controllers
             return Ok(employees);
         }
 
+        [HttpGet]
+        [Route("salesdetails/{id}")]
+        public IActionResult Details(int id)
+        {
+            var details=_employeeRepository.GetSalesDetails(id);
+            return Ok(details);
+        }
+
     }
 }

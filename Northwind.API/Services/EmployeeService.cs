@@ -25,5 +25,18 @@ namespace Northwind.API.Services
 
             return employees;
         }
+
+        public SalesDetailsDTO GetSalesDetails(int id)
+        {
+            var details = _context.Employees.Where(x => x.EmployeeId == id).Select(x => new SalesDetailsDTO
+            {
+                Firstname = x.FirstName,
+                Lastname= x.LastName
+            }).FirstOrDefault();
+
+            details.TotalSales = _context.Orders.Where(x => x.EmployeeId == id).Count();
+
+            return details;
+        }
     }
 }

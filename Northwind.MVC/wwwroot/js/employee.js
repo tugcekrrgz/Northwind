@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
 
-    const URL = "https://localhost:7000/api/employee";
+    const employeesURL = "https://localhost:7000/api/employee";
+    const salesDetailsURL = "https://localhost:7000/api/employee/salesdetails";
     class Employee {
 
         constructor(_id, _firstname, _lastname, _title) {
@@ -16,7 +17,7 @@
     class EmployeeAPI {
         static getEmployees() {
             $.ajax({
-                url: `${URL}`,
+                url: `${employeesURL}`,
                 type: "Get",
                 success: function (data) {
                     data.forEach(function (value, index) {
@@ -28,6 +29,20 @@
                 error: function (err) {
                     console.log(err);
                 },
+            })
+        }
+
+        static getSalesDetails(id) {
+            $.ajax({
+                url: `${salesDetailsURL}/${id}`,
+                type: "Get",
+                success: function (data) {
+                    console.log(data);
+                    fillEmployeeCard(data);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
             })
         }
     }
@@ -52,9 +67,15 @@
         }
     }
 
+    function fillEmployeeCard(data) {
+        $("#employeeFullName").text(`${data.firstname} ${data.lastname}`);
+        $("#employeeTotalSaleCount").text(`${data.totalSales}`);
+        $("#employeeCard").removeClass("d-none").addClass("d-block");
+    }
+
     $("#employeeBody").on("click", function (e) {
         if (e.target.name == "salesDetails") {
-            alert(e.target.id);
+            EmployeeAPI.getSalesDetails(e.target.id);
         }
     })
 
