@@ -17,7 +17,7 @@ namespace Northwind.API.Controllers
             _employeeRepository = employeeRepository;
         }
 
-
+        [HttpGet]
         public IActionResult Get()
         {
             var employees = _employeeRepository.GetEmployees();
