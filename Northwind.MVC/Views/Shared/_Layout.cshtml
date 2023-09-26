@@ -28,9 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Report">Order Reports</a>
+                        </li>
                     </ul>
-                    <a asp-action="MyCard" asp-controller="Card" class="btn btn-secondary ms-auto">
-                        0
+                    <a asp-action="Index" asp-controller="Card" class="btn btn-secondary ms-auto">
+                        <p id="count"></p>
                     </a>
                 </div>
             </div>

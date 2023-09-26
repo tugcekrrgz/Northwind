@@ -4,18 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-hover" id="cardTable">
-    <thead>
-        <tr>
-            <th>Product Name</th>
-            <th>UnitPrice</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-    </thead>
-    <tbody id="cardTableBody">
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-9">
+                <table class="table table-hover" id="cardTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>UnitPrice</th>
+                            <th>Quantity</th>
+                            <th>Sub Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cardTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 text-center">
+                <h1>Total Price</h1>
+                <h2 id="totalPrice"></h2>
+                <button id="complete" class="btn btn-primary">Complete Card</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script src="/js/card.js"></script>

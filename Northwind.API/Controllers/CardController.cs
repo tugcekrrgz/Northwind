@@ -18,6 +18,24 @@ namespace Northwind.API.Controllers
             _productRepository = productRepository;
         }
 
+
+        [HttpGet]
+        [Route("getitems")]
+        public IActionResult GetItems()
+        {
+            var cardSession = SessionHelper.GetProductFromJson<CardService>(HttpContext.Session, "sepet");
+            if(cardSession == null)
+            {
+                return NotFound("Sepetiniz Boş!");
+            }
+            else
+            {
+                return Ok(cardSession.MyCard.Values.ToList());
+            }
+        }
+
+
+
         [HttpGet]
         [Route("addtocard/{id}")]
         public IActionResult AddToCard(int id) 
