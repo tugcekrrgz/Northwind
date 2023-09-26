@@ -11,6 +11,8 @@ builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
 
+builder.Services.AddScoped<IProductRepository, ProductService>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CORS", cors =>
