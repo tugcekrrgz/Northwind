@@ -9,10 +9,22 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//Services
 builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
-
 builder.Services.AddScoped<IProductRepository, ProductService>();
 
+//Disturbed Session Configure
+builder.Services.AddDistributedMemoryCache();
+
+//Session
+builder.Services.AddSession( options =>
+{
+    options.Cookie.Name = "product_card";
+    options.IdleTimeout=TimeSpan.FromMinutes(5);
+});
+
+
+//CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CORS", cors =>
@@ -30,6 +42,8 @@ app.UseHttpsRedirection();
 app.UseCors("CORS");
 
 app.MapControllers();
+
+app.UseSession();
 
 app.Run();
 
